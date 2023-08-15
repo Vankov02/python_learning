@@ -92,13 +92,25 @@
 #len(название_списка) - подсчитывает длину списка(количество элементов)
 
 # Код программы, где пользователь сам задает размер списка и вводит данные в него
-n = int(input("Введите количество людей: "))
-guest_list = []
-i = 0
-while i < n:
-    string = "Введите имя " + str(i+1) + "-го гостя: "
-    guest_list.append(input(string))
-    i += 1
-print(guest_list)
+# n = int(input("Введите количество людей: "))
+# guest_list = []
+# i = 0
+# while i < n:
+#     string = "Введите имя " + str(i+1) + "-го гостя: "
+#     guest_list.append(input(string))
+#     i += 1
+# print(guest_list)
 
 
+def print_to_file(name_of_file):
+    try:
+        with open(name_of_file, 'r') as file: #r- reopen
+            content = file.read() # чтение файла
+            print(content)
+    except FileNotFoundError: #исключение отсутствия найденого файла
+        print(f"Файл '{name_of_file}' не найден.")
+    except Exception as e:
+        print(f"Ошибка: {e}")
+
+file_to_read = input('Введите название файла: ')
+print_to_file(file_to_read)
