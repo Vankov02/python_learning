@@ -107,7 +107,7 @@ def print_to_file(name_of_file):
         with open(name_of_file, 'r') as file: #r- reopen
             content = file.read() # чтение файла
             print(content)
-    except FileNotFoundError: #исключение отсутствия найденого файла
+    except FileNotFoundError: #исключение отсутствия найденого файлa
         print(f"Файл '{name_of_file}' не найден.")
     except Exception as e:
         print(f"Ошибка: {e}")
