@@ -102,15 +102,45 @@
 # print(guest_list)
 
 
-def print_to_file(name_of_file):
-    try:
-        with open(name_of_file, 'r') as file: #r- reopen
-            content = file.read() # чтение файла
-            print(content)
-    except FileNotFoundError: #исключение отсутствия найденого файлa
-        print(f"Файл '{name_of_file}' не найден.")
-    except Exception as e:
-        print(f"Ошибка: {e}")
+# def print_to_file(name_of_file):
+#     try:
+#         with open(name_of_file, 'r') as file: #r- reopen
+#             content = file.read() # чтение файла
+#             print(content)
+#     except FileNotFoundError: #исключение отсутствия найденого файлa
+#         print(f"Файл '{name_of_file}' не найден.")
+#     except Exception as e:
+#         print(f"Ошибка: {e}")
+#
+# file_to_read = input('Введите название файла: ')
+# print_to_file(file_to_read)
 
-file_to_read = input('Введите название файла: ')
-print_to_file(file_to_read)
+#использование срезов в списке
+# list = [1,2,3,4,5,6]
+# print(list[1]) # вывести элемент в данном случае второй
+# print(list[3:5]) # вывести элемент в данном случае с четвертого по шестой(не включая шестой)
+# print(list[1:5:2])# вывести элемент в данном случае со второго по шестой с шагом 2(не включая шестой)
+# print(list[1:-2:2]) #аналогично предыдущему(индекс -2 означает по второй элемент с конца)
+# print(list[::-1]) #вывод списка в обратном порядке
+#___________________________________________________________________________________________________
+#Кортежи - аналог списков, отличие в том что значения кортежей нельзя изменять(они своего рода константы), но при этом
+#занимают меньше места. Используются чаще для передачи каких либо данных.
+nametuple = (1,2,True,'word', 4.7, 4) #создание кортежа
+othertuple = 1,4, 'round', 6.6
+print(othertuple)
+number = (5) # не воспринимается кортежем
+print(number)
+number1 = (5,) # уже воспринимается как кортеж
+print(number1)
+
+for i in nametuple:
+    print(i, end=' ') #вывести все элементы кортежа используя цикл
+print('\n')
+
+#преобразование списка в кортеж с помошью метода tuple
+nums = [1,2,4,7,5,9]
+tuple_nums = tuple(nums)
+print(tuple_nums)
+#преобразование строки в кортеж с посимвольными элементами
+string_tuple = 'Hello world'
+print(tuple(string_tuple))
