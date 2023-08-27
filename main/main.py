@@ -291,18 +291,47 @@
 #Использование мудулей то бишь библиотек которые хранят в себе разные функции и методы для работы.
 #Чтобы использовать библиотеку: import *название библотеки*. Или же если стоит обратиться только определенной
 #функции из модуля тогда: from *название библиотеки* import *название функции или переменной, которая нам нужна*
-import math
-import random as rand
-from mymodule import sum_three_numbers as mysum
-x = 5.65678
-new_x= math.ceil(x)
-print(x)
-print(new_x)
-
-r = rand.randrange(10,100)
-print(r)
-
-res = mysum(4,6,0)
-print(res)
+# import math
+# import random as rand
+# from mymodule import sum_three_numbers as mysum
+# x = 5.65678
+# new_x= math.ceil(x)
+# print(x)
+# print(new_x)
+#
+# r = rand.randrange(10,100)
+# print(r)
+#
+# res = mysum(4,6,0)
+# print(res)
 #__________________________________________________________________________________________________________
+#ООП - обьектно-ориентированное программирование
+#объекты наследуют свойства класса, но при этом мы можем указывать абсолютно разные значения полям наших обьектов
 
+class Cat:
+    name = None
+    sex = None
+    age = None
+    isHappy = None
+
+    def set_data(self,name,sex,age, isHappy):
+        self.name = name
+        self.sex = sex
+        self.age = age
+        self.isHappy = isHappy
+
+    def get_data(self):
+        print(self.name, 'sex:',self.sex, 'age:',self.age, 'isHappy:', self.isHappy)
+#можно обращаться к каждому полю и присваивать ему значение
+cat1 = Cat()
+cat1.name = 'Yarik'
+cat1.sex = False
+cat1.age = 3
+cat1.isHappy = 'NO'
+#а можно воспользоваться методом set чтобы присвоить значения всез полей сразу
+cat2 = Cat()
+cat2.set_data('Vlad', True, 5, 'YES!')
+# и с помощью метода get вывести сразу все данные
+cat2.get_data()
+cat1.get_data()
+#________________________________________________________________________________________________
