@@ -308,13 +308,44 @@
 #ООП - обьектно-ориентированное программирование
 #объекты наследуют свойства класса, но при этом мы можем указывать абсолютно разные значения полям наших обьектов
 
+# class Cat:
+#     name = None
+#     sex = None
+#     age = None
+#     isHappy = None
+#
+#     def set_data(self,name,sex,age, isHappy):
+#         self.name = name
+#         self.sex = sex
+#         self.age = age
+#         self.isHappy = isHappy
+#
+#     def get_data(self):
+#         print(self.name, 'sex:',self.sex, 'age:',self.age, 'isHappy:', self.isHappy)
+# #можно обращаться к каждому полю и присваивать ему значение
+# cat1 = Cat()
+# cat1.name = 'Yarik'
+# cat1.sex = False
+# cat1.age = 3
+# cat1.isHappy = 'NO'
+# #а можно воспользоваться методом set чтобы присвоить значения всез полей сразу
+# cat2 = Cat()
+# cat2.set_data('Vlad', True, 5, 'YES!')
+# # и с помощью метода get вывести сразу все данные
+# cat2.get_data()
+# cat1.get_data()
+#________________________________________________________________________________________________
+#конструкторы
 class Cat:
     name = None
     sex = None
     age = None
     isHappy = None
 
-    def set_data(self,name,sex,age, isHappy):
+    def __init__(self,name = None,sex = None,age = None, isHappy = None):
+        self.set_data(name,sex,age, isHappy)
+        self.get_data()
+    def set_data(self,name = None,sex = None,age = None, isHappy = None):
         self.name = name
         self.sex = sex
         self.age = age
@@ -322,16 +353,11 @@ class Cat:
 
     def get_data(self):
         print(self.name, 'sex:',self.sex, 'age:',self.age, 'isHappy:', self.isHappy)
-#можно обращаться к каждому полю и присваивать ему значение
-cat1 = Cat()
-cat1.name = 'Yarik'
-cat1.sex = False
-cat1.age = 3
-cat1.isHappy = 'NO'
-#а можно воспользоваться методом set чтобы присвоить значения всез полей сразу
-cat2 = Cat()
-cat2.set_data('Vlad', True, 5, 'YES!')
-# и с помощью метода get вывести сразу все данные
-cat2.get_data()
-cat1.get_data()
-#________________________________________________________________________________________________
+#теперь же зачет конструктора методы set и get выполняются в самом конструкторе, таким образом код сократился
+cat1 = Cat('Yarik', True, 3, 'NO...')
+cat2 = Cat('Vlad', True, 5, 'YES!')
+cat3 = Cat('Oleg', False)
+
+#переопределение методов происходит засчет установления исходных значений полей, таким образом мы можем
+#использовать контруктор с количесвом переменных, не превышающих количество допустимых переменных
+#_____________________________________________________________________________________________________
