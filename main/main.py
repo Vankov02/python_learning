@@ -202,47 +202,82 @@
 #______________________________________________________________________________________________________________________
 # Функции - это подпрограммы, где используется код который мы можем применять несколько раз, при этом вызывая только саму
 # функцию, а не пишем каждый раз код заново.
-def test_func():
-    pass #pass - "ничего". Функция пустышка.
-
-def one(word):
-    print(word, end=' ')
-    print('!')
-one('Yarik')
-
-def sum(a,b):
-    #print(res)
-    return a + b
-# или же можно создать переменную и возвращать ее значение
-def sum1(a,b):
-    sl = a + b
-    #print(res)
-    return sl
-
-# sum(4,6)
-# sum("I'm ","a human")
-res = sum(4,6)
-print(res)
-res1 = sum1(4,6)
-print(res1)
-
-# нахождение минимального числа из списка
-def minimal(nums):
-    minimal_number = nums[0]
-    for i in nums:
-        if i < minimal_number:
-            minimal_number = i
-
-    return minimal_number
-
-nums1 = [1,2,3,6,8,4,10]
-list_min = minimal(nums1)
-print(list_min)
-
-# lambda - функции - анонимные функции. Такую функцию помещаем в переменную и используем ее. Запись таких функций
-#осуществляется в одну строчку, что удобно при записи маленьких функций
-lambda_func = lambda x,y: x * y
-result = lambda_func(5,2)
-print(result)
+# def test_func():
+#     pass #pass - "ничего". Функция пустышка.
+#
+# def one(word):
+#     print(word, end=' ')
+#     print('!')
+# one('Yarik')
+#
+# def sum(a,b):
+#     #print(res)
+#     return a + b
+# # или же можно создать переменную и возвращать ее значение
+# def sum1(a,b):
+#     sl = a + b
+#     #print(res)
+#     return sl
+#
+# # sum(4,6)
+# # sum("I'm ","a human")
+# res = sum(4,6)
+# print(res)
+# res1 = sum1(4,6)
+# print(res1)
+#
+# # нахождение минимального числа из списка
+# def minimal(nums):
+#     minimal_number = nums[0]
+#     for i in nums:
+#         if i < minimal_number:
+#             minimal_number = i
+#
+#     return minimal_number
+#
+# nums1 = [1,2,3,6,8,4,10]
+# list_min = minimal(nums1)
+# print(list_min)
+#
+# # lambda - функции - анонимные функции. Такую функцию помещаем в переменную и используем ее. Запись таких функций
+# #осуществляется в одну строчку, что удобно при записи маленьких функций
+# lambda_func = lambda x,y: x * y
+# result = lambda_func(5,2)
+# print(result)
 #_________________________________________________________________________________________________________________
+#Работа с файлами. Всегда нужно не забывать закрывать файл, иначе может произойти пизда
+# data = input('Введите текст: ')
+# file = open('data/text.txt', 'w')
+# #file.write('\n Ярик, че ты смотришь?')
+# file.write(data)
+# # for line in file:
+# #     print(line)
+#
+# file.close()
+#________________________________________________________________________________________________________________
+#обработка исключений try - except
+# в блоке try описываем код который должен выполнится, в блоке except описываем то что будет выполняться в случае ошибки
+data = 0
+while data == 0:
+    try:
+        data = int(input('Введите число: '))
+        data+=5
+        print(data)
+    except ValueError:
+        print("Будь внимательней! ВВЕДИ ЧИСЛО!")
+
+#Блоков except может быть сколько угодно
+#finally - блок который выполнится в любом случае(то бишь выполнится вместе с try или вместе с except)
+data = 0
+while data == 0:
+    try:
+        data = int(input('Введите число: '))
+        data+=5
+        print(data)
+    except ValueError:
+        print("Будь внимательней! ВВЕДИ ЧИСЛО!")
+    finally:
+        print('finally')
+#также есть блок else, который срабатывает если не сработал ни try ни except, то сработает блок else
+#___________________________________________________________________________________________________________
 
