@@ -336,28 +336,58 @@
 # cat1.get_data()
 #________________________________________________________________________________________________
 #конструкторы
-class Cat:
-    name = None
-    sex = None
-    age = None
-    isHappy = None
-
-    def __init__(self,name = None,sex = None,age = None, isHappy = None):
-        self.set_data(name,sex,age, isHappy)
-        self.get_data()
-    def set_data(self,name = None,sex = None,age = None, isHappy = None):
-        self.name = name
-        self.sex = sex
-        self.age = age
-        self.isHappy = isHappy
-
-    def get_data(self):
-        print(self.name, 'sex:',self.sex, 'age:',self.age, 'isHappy:', self.isHappy)
-#теперь же зачет конструктора методы set и get выполняются в самом конструкторе, таким образом код сократился
-cat1 = Cat('Yarik', True, 3, 'NO...')
-cat2 = Cat('Vlad', True, 5, 'YES!')
-cat3 = Cat('Oleg', False)
+# class Cat:
+#     name = None
+#     sex = None
+#     age = None
+#     isHappy = None
+#
+#     def __init__(self,name = None,sex = None,age = None, isHappy = None):
+#         self.set_data(name,sex,age, isHappy)
+#         self.get_data()
+#     def set_data(self,name = None,sex = None,age = None, isHappy = None):
+#         self.name = name
+#         self.sex = sex
+#         self.age = age
+#         self.isHappy = isHappy
+#
+#     def get_data(self):
+#         print(self.name, 'sex:',self.sex, 'age:',self.age, 'isHappy:', self.isHappy)
+# #теперь же зачет конструктора методы set и get выполняются в самом конструкторе, таким образом код сократился
+# cat1 = Cat('Yarik', True, 3, 'NO...')
+# cat2 = Cat('Vlad', True, 5, 'YES!')
+# cat3 = Cat('Oleg', False)
 
 #переопределение методов происходит засчет установления исходных значений полей, таким образом мы можем
 #использовать контруктор с количесвом переменных, не превышающих количество допустимых переменных
 #_____________________________________________________________________________________________________
+#Наследование. Инкапсуляция. Полиморфизм
+class Building:
+    year = None
+    city = None
+
+    def __init__(self, year, city):
+        self.city = city
+        self.year = year
+
+    def get_info(self):
+        print('Year: ', self.year, '. City: ', self.city)
+
+#чтобы наследовать характеристики одного класса от другого нужно при описании нашего класса в скобках указать класс
+#от которого мы наследуем например class School(Building): в данном случае класс School наследует все от класса Building
+#Полиморфизм- инструмент с помощью которого мы можем переписывать в классах наследниках функции класса родителя
+#Инкапсуляция - защита данных(реализуется как два нижних подчеркивания перед полем(переменной) например: __year = None)
+#Инкапсуляция плохо реализована в языке питон и употребляется не очень часто
+class School(Building):
+    pupils = None
+    def __init__(self, pupils, year, city):
+        self.pupils = pupils
+        super(School,self).__init__(year, city)
+
+    def get_info(self):
+        print('Pupils: ', self.pupils)
+        super().get_info()
+
+house = School(100,2000, 'Novosibirsk')
+house.get_info()
+#________________________________________________________________________________________________________________
