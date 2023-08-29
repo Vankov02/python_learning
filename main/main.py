@@ -362,32 +362,50 @@
 #использовать контруктор с количесвом переменных, не превышающих количество допустимых переменных
 #_____________________________________________________________________________________________________
 #Наследование. Инкапсуляция. Полиморфизм
-class Building:
-    year = None
-    city = None
-
-    def __init__(self, year, city):
-        self.city = city
-        self.year = year
-
-    def get_info(self):
-        print('Year: ', self.year, '. City: ', self.city)
-
-#чтобы наследовать характеристики одного класса от другого нужно при описании нашего класса в скобках указать класс
-#от которого мы наследуем например class School(Building): в данном случае класс School наследует все от класса Building
-#Полиморфизм- инструмент с помощью которого мы можем переписывать в классах наследниках функции класса родителя
-#Инкапсуляция - защита данных(реализуется как два нижних подчеркивания перед полем(переменной) например: __year = None)
-#Инкапсуляция плохо реализована в языке питон и употребляется не очень часто
-class School(Building):
-    pupils = None
-    def __init__(self, pupils, year, city):
-        self.pupils = pupils
-        super(School,self).__init__(year, city)
-
-    def get_info(self):
-        print('Pupils: ', self.pupils)
-        super().get_info()
-
-house = School(100,2000, 'Novosibirsk')
-house.get_info()
+# class Building:
+#     year = None
+#     city = None
+#
+#     def __init__(self, year, city):
+#         self.city = city
+#         self.year = year
+#
+#     def get_info(self):
+#         print('Year: ', self.year, '. City: ', self.city)
+#
+# #чтобы наследовать характеристики одного класса от другого нужно при описании нашего класса в скобках указать класс
+# #от которого мы наследуем например class School(Building): в данном случае класс School наследует все от класса Building
+# #Полиморфизм- инструмент с помощью которого мы можем переписывать в классах наследниках функции класса родителя
+# #Инкапсуляция - защита данных(реализуется как два нижних подчеркивания перед полем(переменной) например: __year = None)
+# #Инкапсуляция плохо реализована в языке питон и употребляется не очень часто
+# class School(Building):
+#     pupils = None
+#     def __init__(self, pupils, year, city):
+#         self.pupils = pupils
+#         super(School,self).__init__(year, city)
+#
+#     def get_info(self):
+#         print('Pupils: ', self.pupils)
+#         super().get_info()
+#
+# house = School(100,2000, 'Novosibirsk')
+# house.get_info()
 #________________________________________________________________________________________________________________
+#Декораторы функций - засчет них мы можем выполнять какой либо код ДО или ПОСЛЕ выполнения какой либо функции
+
+import webbrowser
+
+def validator(func):
+    def wrapper(url):
+        if '.' in url:
+            func(url)
+        else:
+            print('Неверный URL')
+    return wrapper
+
+@validator
+def open_url(url):
+    webbrowser.open(url)
+
+open_url('https://vk.com')
+#_______________________________________________________________________________________
